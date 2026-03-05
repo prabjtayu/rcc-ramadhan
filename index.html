@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ramadhan Kareem</title>
+    <title>Web Ramadhan Kareem</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -58,6 +58,11 @@
         }
         .page-content { display: none; }
         .page-content.active { display: flex; }
+        
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
     </style>
 </head>
 <body class="bg-ramadhan-cream text-gray-800 font-sans antialiased min-h-screen flex flex-col relative overflow-x-hidden">
@@ -65,14 +70,16 @@
     <div class="fixed inset-0 bg-ornament pointer-events-none z-0"></div>
     <div class="fixed top-10 left-[-20px] text-8xl opacity-5 select-none pointer-events-none transform -rotate-45 z-0">🌿</div>
     <div class="fixed bottom-20 right-[-20px] text-8xl opacity-5 select-none pointer-events-none transform rotate-45 z-0">🌿</div>
+    
     <nav class="bg-ramadhan-nav text-white shadow-lg sticky top-0 z-50">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <div class="font-serif text-xl font-bold tracking-wider">
-                <span class="text-ramadhan-gold">🌙</span> Marhaban Ya Ramadhan
+            <div class="font-serif text-lg md:text-xl font-bold tracking-wider truncate mr-2">
+                <span class="text-ramadhan-gold">🌙</span> Selamat menunaikan ibadah Ramadhan 😊
             </div>
-            <div class="flex space-x-2 bg-white/10 p-1 rounded-full">
-                <button onclick="switchPage('doa-page')" id="nav-doa" class="nav-link active px-4 py-1.5 rounded-full text-sm transition-colors duration-200">Doa Harian</button>
-                <button onclick="switchPage('dzikir-page')" id="nav-dzikir" class="nav-link px-4 py-1.5 rounded-full text-sm transition-colors duration-200">Dzikir</button>
+            <div class="flex space-x-1 md:space-x-2 bg-white/10 p-1 rounded-full overflow-x-auto whitespace-nowrap hide-scrollbar">
+                <button onclick="switchPage('doa-page')" id="nav-doa" class="nav-link active px-3 md:px-4 py-1.5 rounded-full text-xs md:text-sm transition-colors duration-200">Doa</button>
+                <button onclick="switchPage('dzikir-page')" id="nav-dzikir" class="nav-link px-3 md:px-4 py-1.5 rounded-full text-xs md:text-sm transition-colors duration-200">Dzikir</button>
+                <button onclick="switchPage('zakat-page')" id="nav-zakat" class="nav-link px-3 md:px-4 py-1.5 rounded-full text-xs md:text-sm transition-colors duration-200">Zakat</button>
             </div>
         </div>
     </nav>
@@ -91,12 +98,13 @@
     </header>
 
     <div class="flex-grow flex flex-col w-full">
+        
         <main id="doa-page" class="page-content active container mx-auto px-4 flex-col items-center relative z-10 max-w-5xl mb-12">
-
-        <div class="bg-white p-2.5 rounded-[32px] shadow-soft mb-10 w-full max-w-2xl border border-gray-100/50 mx-auto">
-            <div class="rounded-[24px] h-48 md:h-64 w-full relative overflow-hidden">
-            <img src="masjid.jpg" alt="Ramadan Kareem" class="w-full h-full object-cover object-center">
-        </div>
+            <div class="bg-white p-2.5 rounded-[32px] shadow-soft mb-10 w-full max-w-2xl border border-gray-100/50 mx-auto">
+                <div class="rounded-[24px] h-48 md:h-64 w-full relative overflow-hidden bg-gray-200 flex items-center justify-center">
+                    <span class="text-4xl">🕌</span>
+                    <img src="masjid.jpg" alt="Ramadan Kareem" class="w-full h-full object-cover object-center absolute inset-0" onerror="this.style.display='none'">
+                </div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
@@ -147,7 +155,6 @@
         </main>
 
         <main id="dzikir-page" class="page-content container mx-auto px-4 flex-col items-center justify-center relative z-10 max-w-lg w-full mb-12 mx-auto">
-            
             <section class="bg-white p-2.5 rounded-[40px] shadow-soft w-full border border-gray-100/50 relative">
                 
                 <div id="notificationArea" class="absolute -top-16 left-0 w-full flex justify-center hidden z-20">
@@ -157,7 +164,6 @@
                 </div>
 
                 <div class="bg-ramadhan-cream/30 rounded-[32px] p-8 md:p-10 w-full relative overflow-hidden flex flex-col items-center border border-gray-100">
-                    
                     <h2 class="text-xs font-bold text-ramadhan-green tracking-[0.2em] uppercase mb-2">Penghitung</h2>
                     <h3 class="font-serif text-4xl md:text-5xl text-ramadhan-dark font-bold mb-6 text-center">Dzikir Harian</h3>
                     
@@ -185,15 +191,146 @@
                             </div>
                         </button>
                     </div>
-
                 </div>
             </section>
         </main>
 
+        <main id="zakat-page" class="page-content container mx-auto px-4 flex-col items-center relative z-10 max-w-3xl w-full mb-12">
+            <section class="bg-white p-6 md:p-10 rounded-[32px] shadow-soft w-full border border-gray-100/50 relative overflow-hidden">
+                <div class="text-center mb-8">
+                    <h3 class="font-serif text-3xl md:text-4xl text-ramadhan-dark font-bold mb-2">Kalkulator Zakat</h3>
+                    <p class="text-gray-500 text-sm">Hitung zakat Anda sesuai dengan syariat Islam</p>
+                </div>
+
+                <div class="space-y-7">
+                    
+                    <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 border-b border-gray-100 pb-6">
+                        <label class="font-bold text-[#005B29] text-lg whitespace-nowrap">Jenis Zakat :</label>
+                        <div class="relative w-full sm:w-auto">
+                            <select id="jenisZakat" class="w-full sm:w-64 bg-[#005B29] text-white font-bold px-5 py-2.5 rounded-full appearance-none outline-none cursor-pointer tracking-wide hover:bg-[#00471f] transition-colors shadow-sm focus:ring-0">
+                                <option value="penghasilan" class="bg-[#5a4bda] text-white">PENGHASILAN</option>
+                                <option value="perusahaan" class="bg-[#005B29] text-white">PERUSAHAAN</option>
+                                <option value="perdagangan" class="bg-[#005B29] text-white">PERDAGANGAN</option>
+                                <option value="emas" class="bg-[#005B29] text-white">EMAS</option>
+                            </select>
+                            <div class="absolute right-4 top-1/2 transform -translate-y-1/2 pointer-events-none">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7" /></svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-6">
+                        <label class="block text-sm text-[#333] mb-2">Harga Emas Saat Ini</label>
+                        <div class="flex items-center border border-[#ced4da] rounded overflow-hidden bg-white transition-all">
+                            <span class="px-3 py-2 text-[#495057] text-sm bg-gray-50 border-r border-[#ced4da]">Rp.</span>
+                            <input type="text" id="hargaEmas" class="flex-1 px-3 py-2 outline-none text-sm text-[#495057]" placeholder="1.200.000" onkeyup="formatRupiah(this); hitungOtomatis()">
+                        </div>
+                    </div>
+
+                    <div id="formPenghasilan" class="space-y-5 transition-all duration-300">
+                        <div>
+                            <label class="block text-sm text-[#333] mb-2">Gaji saya per bulan</label>
+                            <div class="flex items-center border border-[#ced4da] rounded overflow-hidden bg-white">
+                                <span class="px-3 py-2 text-[#495057] text-sm">Rp.</span>
+                                <input type="text" id="gaji" class="flex-1 px-3 py-2 outline-none text-sm text-[#495057]" value="0" onkeyup="formatRupiah(this); hitungOtomatis()">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm text-[#333] mb-2">Penghasilan lain-lain per bulan</label>
+                            <div class="flex items-center border border-[#ced4da] rounded overflow-hidden bg-white">
+                                <span class="px-3 py-2 text-[#495057] text-sm">Rp.</span>
+                                <input type="text" id="pendapatanLain" class="flex-1 px-3 py-2 outline-none text-sm text-[#495057]" value="0" onkeyup="formatRupiah(this); hitungOtomatis()">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm text-[#333] mb-2">Jumlah penghasilan per bulan</label>
+                            <div class="flex items-center border border-[#ced4da] rounded overflow-hidden bg-white">
+                                <span class="px-3 py-2 text-[#495057] text-sm">Rp.</span>
+                                <input type="text" id="jumlahPenghasilan" class="flex-1 px-3 py-2 outline-none text-sm text-[#495057] bg-transparent" value="0" readonly>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm text-[#333] mb-2">Nisab per tahun</label>
+                            <div class="flex items-center border border-[#ced4da] rounded overflow-hidden bg-[#e9ecef]">
+                                <span class="px-3 py-2 text-[#495057] text-sm">Rp.</span>
+                                <input type="text" id="nisabTahun" class="flex-1 px-3 py-2 outline-none text-sm text-[#495057] bg-transparent" value="0" readonly>
+                            </div>
+                            <p class="text-[13px] text-[#dc3545] mt-1.5 font-medium">Sesuai SK Ketua BAZNAS No. 15 tahun 2024</p>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm text-[#333] mb-2">Nisab per bulan</label>
+                            <div class="flex items-center border border-[#ced4da] rounded overflow-hidden bg-[#e9ecef]">
+                                <span class="px-3 py-2 text-[#495057] text-sm">Rp.</span>
+                                <input type="text" id="nisabBulan" class="flex-1 px-3 py-2 outline-none text-sm text-[#495057] bg-transparent" value="0" readonly>
+                            </div>
+                            <p class="text-[13px] text-[#dc3545] mt-1.5 font-medium">Sesuai SK Ketua BAZNAS No. 15 tahun 2024</p>
+                        </div>
+                    </div>
+
+                    <div id="formEmas" class="space-y-6 hidden transition-all duration-300">
+                        <div>
+                            <label class="block text-sm text-[#333] mb-2">Total Emas yang Dimiliki (Gram)</label>
+                            <div class="flex items-center border border-[#ced4da] rounded overflow-hidden bg-white">
+                                <input type="number" id="jumlahEmas" class="flex-1 px-3 py-2 outline-none text-sm text-[#495057]" placeholder="0" onkeyup="hitungOtomatis()">
+                                <span class="px-3 py-2 text-[#495057] text-sm bg-gray-50 border-l border-[#ced4da]">Gram</span>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm text-[#333] mb-2">Nisab Emas (Tetap)</label>
+                            <div class="flex items-center border border-[#ced4da] rounded overflow-hidden bg-[#e9ecef]">
+                                <input type="text" class="flex-1 px-3 py-2 outline-none text-sm text-[#495057] bg-transparent" value="85" readonly>
+                                <span class="px-3 py-2 text-[#495057] text-sm bg-[#e9ecef] border-l border-[#ced4da]">Gram</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="formComingSoon" class="hidden text-center py-12 bg-gray-50 rounded border border-gray-200">
+                        <span class="text-3xl mb-3 block">⚙️</span>
+                        <h4 class="font-bold text-gray-700">Dalam Pembangunan</h4>
+                        <p class="text-sm text-gray-500 mt-1">Kalkulator untuk jenis zakat ini akan ditambah kelak.</p>
+                    </div>
+
+                    <div id="zakatErrorMsg" class="hidden text-[#dc3545] text-sm font-medium text-center bg-[#f8d7da] border border-[#f5c6cb] py-3 rounded"></div>
+
+                    <button onclick="hitungZakat()" class="btn-tap w-full bg-[#005B29] hover:bg-[#00471f] text-white font-bold py-3.5 rounded shadow-sm transition-colors mt-6 flex justify-center items-center gap-2 text-base">
+                        <span>Hitung Zakat</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14l6 6 10-10"/></svg>
+                    </button>
+                </div>
+
+                <div id="hasilZakat" class="hidden mt-8 transition-all duration-500">
+                    <div class="bg-[#005B29] p-6 md:p-8 rounded shadow-sm relative overflow-hidden text-white">
+                        <div class="absolute -right-6 -top-6 text-white opacity-5 text-9xl pointer-events-none">✨</div>
+                        
+                        <h4 class="text-center font-bold text-ramadhan-cream tracking-widest text-sm mb-6 uppercase border-b border-white/20 pb-4">Ketetapan Zakat</h4>
+                        
+                        <div class="space-y-4">
+                            <div class="flex flex-col md:flex-row md:justify-between items-start md:items-center bg-black/10 p-4 rounded">
+                                <span class="text-white/90 text-sm mb-1 md:mb-0">Status Kewajiban Zakat</span>
+                                <span id="valStatus" class="px-4 py-1.5 rounded-full text-sm font-bold shadow-sm bg-white text-gray-800">Menyemak...</span>
+                            </div>
+                            
+                            <div class="flex flex-col items-center pt-6 pb-2 text-center">
+                                <span class="font-medium text-white/90 text-sm mb-2" id="labelZakatType">Jumlah Zakat (2.5%)</span>
+                                <span class="font-bold text-white text-4xl md:text-5xl tracking-tight" id="valZakat">Rp 0</span>
+                                <span class="text-xs text-white/70 mt-3 bg-black/20 px-3 py-1 rounded-full" id="waktuZakatInfo">-</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+        </main>
+
     </div>
-    <footer class="w-full pb-8 pt-4 text-center relative z-10 mt-auto border-t border-gray-200">
-        <div class="text-xs font-bold tracking-[0.3em] text-gray-400 uppercase mt-4">
-            RCC Front-end Misi 1 & 2
+
+    <footer class="w-full pb-8 pt-4 text-center relative z-10 mt-auto border-t border-gray-200 bg-white/50">
+        <div class="text-xs font-bold tracking-[0.2em] text-gray-400 uppercase mt-4">
+            Ramadahan Coding Challenge 2026
         </div>
     </footer>
 
@@ -203,6 +340,7 @@
                 page.classList.remove('active');
             });
             document.getElementById(pageId).classList.add('active');
+            
             document.querySelectorAll('.nav-link').forEach(link => {
                 link.classList.remove('active');
             });
@@ -215,9 +353,13 @@
             } else if (pageId === 'dzikir-page') {
                 document.getElementById('nav-dzikir').classList.add('active');
                 titleBadge.innerText = 'Fitur Interaktif';
+            } else if (pageId === 'zakat-page') {
+                document.getElementById('nav-zakat').classList.add('active');
+                titleBadge.innerText = 'Kalkulator Zakat';
             }
-            window.scrollTo(0,0);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
+
         let count = 0;
         const target = 33; 
 
@@ -247,25 +389,184 @@
         btnReset.addEventListener('click', function() {
             count = 0; 
             counterDisplay.innerText = count; 
-            
             counterDisplay.classList.remove('text-ramadhan-gold');
             counterDisplay.classList.add('text-ramadhan-green');
-
             sembunyikanNotifikasi();
         });
 
         function tampilkanNotifikasi() {
             notificationArea.classList.remove('hidden');
             notificationArea.classList.add('animate-pop-in');
-            
-            setTimeout(() => {
-                sembunyikanNotifikasi();
-            }, 4000);
+            setTimeout(() => { sembunyikanNotifikasi(); }, 4000);
         }
 
         function sembunyikanNotifikasi() {
             notificationArea.classList.add('hidden');
             notificationArea.classList.remove('animate-pop-in');
+        }
+
+        document.getElementById('jenisZakat').addEventListener('change', function() {
+            const jenis = this.value;
+            const formPenghasilan = document.getElementById('formPenghasilan');
+            const formEmas = document.getElementById('formEmas');
+            const formComingSoon = document.getElementById('formComingSoon');
+            const hasilZakat = document.getElementById('hasilZakat');
+
+            formPenghasilan.classList.add('hidden');
+            formEmas.classList.add('hidden');
+            formComingSoon.classList.add('hidden');
+            
+            hasilZakat.classList.add('hidden');
+            document.getElementById('zakatErrorMsg').classList.add('hidden');
+
+            if (jenis === 'penghasilan') {
+                formPenghasilan.classList.remove('hidden');
+            } else if (jenis === 'emas') {
+                formEmas.classList.remove('hidden');
+            } else {
+                formComingSoon.classList.remove('hidden');
+            }
+            hitungOtomatis();
+        });
+
+        function formatRupiah(input) {
+            let value = input.value.replace(/[^,\d]/g, '').toString();
+            let split = value.split(',');
+            let sisa = split[0].length % 3;
+            let rupiah = split[0].substr(0, sisa);
+            let ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+
+            if (ribuan) {
+                let separator = sisa ? '.' : '';
+                rupiah += separator + ribuan.join('.');
+            }
+            rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+            input.value = rupiah;
+        }
+
+        function parseRupiah(rupiahString) {
+            if(!rupiahString) return 0;
+            return parseInt(rupiahString.replace(/\./g, '')) || 0;
+        }
+        
+        function formatCurrencyID(number) {
+            return new Intl.NumberFormat('id-ID').format(number);
+        }
+
+        function hitungOtomatis() {
+            const jenis = document.getElementById('jenisZakat').value;
+            const hargaEmas = parseRupiah(document.getElementById('hargaEmas').value);
+            
+            if (jenis === 'penghasilan') {
+                const gaji = parseRupiah(document.getElementById('gaji').value);
+                const pendapatanLain = parseRupiah(document.getElementById('pendapatanLain').value);
+                
+                const totalBulanan = gaji + pendapatanLain;
+                document.getElementById('jumlahPenghasilan').value = formatCurrencyID(totalBulanan);
+
+                if (hargaEmas > 0) {
+                    const nisabTahun = hargaEmas * 85;
+                    const nisabBulan = Math.floor(nisabTahun / 12);
+                    
+                    document.getElementById('nisabTahun').value = formatCurrencyID(nisabTahun);
+                    document.getElementById('nisabBulan').value = formatCurrencyID(nisabBulan);
+                } else {
+                    document.getElementById('nisabTahun').value = "0";
+                    document.getElementById('nisabBulan').value = "0";
+                }
+            }
+            
+            document.getElementById('hasilZakat').classList.add('hidden');
+        }
+
+        function hitungZakat() {
+            const jenis = document.getElementById('jenisZakat').value;
+            const hargaEmas = parseRupiah(document.getElementById('hargaEmas').value);
+            const errorMsg = document.getElementById('zakatErrorMsg');
+            
+            errorMsg.classList.add('hidden');
+
+            if (jenis !== 'penghasilan' && jenis !== 'emas') {
+                errorMsg.innerText = "Sistem untuk jenis zakat ini akan ditambah kelak.";
+                errorMsg.classList.remove('hidden');
+                return;
+            }
+
+            if (hargaEmas <= 0) {
+                errorMsg.innerText = "Sila masukkan Harga Emas per gram saat ini dahulu.";
+                errorMsg.classList.remove('hidden');
+                return;
+            }
+
+            let isWajib = false;
+            let zakat = 0;
+            let labelType = "";
+            let infoWaktu = "";
+
+            if (jenis === 'penghasilan') {
+                const gaji = parseRupiah(document.getElementById('gaji').value);
+                const pendapatanLain = parseRupiah(document.getElementById('pendapatanLain').value);
+                const totalBulanan = gaji + pendapatanLain;
+                
+                const nisabBulan = Math.floor((hargaEmas * 85) / 12);
+                
+                if (totalBulanan <= 0) {
+                    errorMsg.innerText = "Sila masukkan jumlah gaji/pendapatan anda.";
+                    errorMsg.classList.remove('hidden');
+                    return;
+                }
+
+                if (totalBulanan >= nisabBulan) {
+                    isWajib = true;
+                    zakat = totalBulanan * 0.025;
+                }
+                
+                labelType = "Jumlah Zakat Penghasilan (2.5%)";
+                infoWaktu = "Dibayar per bulan";
+
+            } else if (jenis === 'emas') {
+                const jumlahEmas = parseFloat(document.getElementById('jumlahEmas').value) || 0;
+                
+                if (jumlahEmas <= 0) {
+                    errorMsg.innerText = "Sila masukkan jumlah gram emas anda.";
+                    errorMsg.classList.remove('hidden');
+                    return;
+                }
+
+                if (jumlahEmas >= 85) {
+                    isWajib = true;
+                    zakat = (jumlahEmas * hargaEmas) * 0.025;
+                }
+                
+                labelType = "Jumlah Zakat Emas (2.5%)";
+                infoWaktu = "Dibayar per tahun (Cukup Haul)";
+            }
+
+            const formatter = new Intl.NumberFormat('id-ID', { 
+                style: 'currency', 
+                currency: 'IDR', 
+                minimumFractionDigits: 0 
+            });
+
+            const statusEl = document.getElementById('valStatus');
+            const valZakatEl = document.getElementById('valZakat');
+            
+            document.getElementById('labelZakatType').innerText = labelType;
+            document.getElementById('waktuZakatInfo').innerText = infoWaktu;
+
+            if (isWajib) {
+                statusEl.innerText = 'WAJIB ZAKAT';
+                statusEl.className = 'px-5 py-2 rounded-full text-xs font-bold shadow-sm bg-red-100 text-[#dc3545] tracking-wide';
+                valZakatEl.innerText = formatter.format(zakat);
+            } else {
+                statusEl.innerText = 'BELUM WAJIB ZAKAT';
+                statusEl.className = 'px-5 py-2 rounded-full text-xs font-bold shadow-sm bg-white/20 text-white tracking-wide';
+                valZakatEl.innerText = "Rp 0";
+            }
+
+            const hasilDiv = document.getElementById('hasilZakat');
+            hasilDiv.classList.remove('hidden');
+            hasilDiv.classList.add('animate-pop-in');
         }
     </script>
 </body>
