@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web Ramadhan Kareem</title>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <script src="https://cdn.tailwindcss.com"></script>
+    
     <script>
         tailwind.config = {
             theme: {
@@ -51,11 +53,13 @@
             background-size: 30px 30px;
             opacity: 0.03;
         }
+        
         .nav-link.active {
             background-color: #D97706;
             color: white;
             font-weight: 600;
         }
+        
         .page-content { display: none; }
         .page-content.active { display: flex; }
         
@@ -80,6 +84,7 @@
                 <button onclick="switchPage('doa-page')" id="nav-doa" class="nav-link active px-3 md:px-4 py-1.5 rounded-full text-xs md:text-sm transition-colors duration-200">Doa</button>
                 <button onclick="switchPage('dzikir-page')" id="nav-dzikir" class="nav-link px-3 md:px-4 py-1.5 rounded-full text-xs md:text-sm transition-colors duration-200">Dzikir</button>
                 <button onclick="switchPage('zakat-page')" id="nav-zakat" class="nav-link px-3 md:px-4 py-1.5 rounded-full text-xs md:text-sm transition-colors duration-200">Zakat</button>
+                <button onclick="switchPage('todo-page')" id="nav-todo" class="nav-link px-3 md:px-4 py-1.5 rounded-full text-xs md:text-sm transition-colors duration-200">To-Do</button>
             </div>
         </div>
     </nav>
@@ -326,11 +331,144 @@
             </section>
         </main>
 
+        <main id="todo-page" class="page-content container mx-auto px-4 flex-col items-center relative z-10 max-w-2xl w-full mb-12">
+            <section class="bg-white p-6 md:p-8 rounded-[32px] shadow-soft w-full border border-gray-100/50 relative overflow-hidden">
+                
+                <div class="flex items-center justify-center gap-3 mb-6">
+                    <span class="text-4xl">🕌</span>
+                    <h3 class="font-serif text-3xl font-bold text-[#1B4332]">Ramadhan Tracker</h3>
+                </div>
+
+                <div class="bg-blue-50/50 border border-blue-100 p-5 rounded-2xl mb-8 relative overflow-hidden">
+                    <div class="absolute -right-4 -top-4 text-6xl opacity-10 pointer-events-none">⭐</div>
+                    <div class="flex justify-between mb-2 relative z-10">
+                        <span class="text-sm font-bold text-[#005B29]">Ringkasan Progress Harian</span>
+                        <span class="text-sm font-bold text-[#005B29]" id="daily-progress-text">0%</span>
+                    </div>
+                    
+                    <div class="w-full bg-white rounded-full h-3 mb-3 relative z-10 border border-gray-100 shadow-inner">
+                        <div class="bg-[#D97706] h-3 rounded-full transition-all duration-500" id="daily-progress-bar" style="width: 0%;"></div>
+                    </div>
+                    <p class="text-xs text-[#005B29] font-bold relative z-10" id="daily-motivation">Ayo mulai ibadahmu hari ini!</p>
+                </div>
+
+                <div class="flex gap-2 overflow-x-auto pb-4 mb-6 hide-scrollbar border-b border-gray-100">
+                    <button onclick="switchTodo('shalat')" id="tab-shalat" class="px-5 py-2.5 rounded-full bg-[#005B29] text-white text-sm font-bold whitespace-nowrap shadow-sm">Shalat Wajib</button>
+                    <button onclick="switchTodo('quran')" id="tab-quran" class="px-5 py-2.5 rounded-full bg-gray-50 text-gray-500 text-sm font-bold whitespace-nowrap hover:bg-gray-100 transition-colors border border-gray-200">Baca Qur'an</button>
+                    <button onclick="switchTodo('puasa')" id="tab-puasa" class="px-5 py-2.5 rounded-full bg-gray-50 text-gray-500 text-sm font-bold whitespace-nowrap hover:bg-gray-100 transition-colors border border-gray-200">Puasa</button>
+                </div>
+
+                <div id="content-shalat" class="todo-content block">
+                    <div class="space-y-3 mb-6">
+                        <label class="flex items-center p-4 bg-gray-50 rounded-xl border border-gray-200 cursor-pointer hover:bg-gray-100 transition-colors">
+                            <input type="checkbox" id="chk-subuh" class="w-5 h-5 accent-[#005B29] mr-4">
+                            <span class="font-bold text-gray-700">Subuh</span>
+                        </label>
+                        <label class="flex items-center p-4 bg-gray-50 rounded-xl border border-gray-200 cursor-pointer hover:bg-gray-100 transition-colors">
+                            <input type="checkbox" id="chk-dzuhur" class="w-5 h-5 accent-[#005B29] mr-4">
+                            <span class="font-bold text-gray-700">Dzuhur</span>
+                        </label>
+                        <label class="flex items-center p-4 bg-gray-50 rounded-xl border border-gray-200 cursor-pointer hover:bg-gray-100 transition-colors">
+                            <input type="checkbox" id="chk-ashar" class="w-5 h-5 accent-[#005B29] mr-4">
+                            <span class="font-bold text-gray-700">Ashar</span>
+                        </label>
+                        <label class="flex items-center p-4 bg-gray-50 rounded-xl border border-gray-200 cursor-pointer hover:bg-gray-100 transition-colors">
+                            <input type="checkbox" id="chk-maghrib" class="w-5 h-5 accent-[#005B29] mr-4">
+                            <span class="font-bold text-gray-700">Maghrib</span>
+                        </label>
+                        <label class="flex items-center p-4 bg-gray-50 rounded-xl border border-gray-200 cursor-pointer hover:bg-gray-100 transition-colors">
+                            <input type="checkbox" id="chk-isya" class="w-5 h-5 accent-[#005B29] mr-4">
+                            <span class="font-bold text-gray-700">Isya</span>
+                        </label>
+                    </div>
+
+                    <div class="mb-5">
+                        <div class="flex justify-between mb-1.5">
+                            <span class="text-xs font-bold text-gray-500">Progress Shalat</span>
+                            <span class="text-xs font-bold text-gray-500" id="shalat-progress-text">0%</span>
+                        </div>
+                        <div class="w-full bg-gray-100 rounded-full h-2">
+                            <div class="bg-[#005B29] h-2 rounded-full transition-all duration-500" id="shalat-progress-bar" style="width: 0%;"></div>
+                        </div>
+                    </div>
+
+                    <button onclick="simpanShalat()" class="btn-tap w-full bg-[#005B29] hover:bg-[#00471f] text-white font-bold py-3.5 rounded-xl shadow-sm transition-colors text-base">Simpan Shalat</button>
+                    
+                    <div class="mt-4 p-4 rounded-xl bg-gray-50 text-center border border-gray-100">
+                        <p class="text-sm font-bold text-gray-400" id="status-shalat">Belum Ada Data Disimpan</p>
+                    </div>
+                </div>
+
+                <div id="content-quran" class="todo-content hidden">
+                    <div class="space-y-5 mb-6">
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-2">Target Hari Ini (Halaman/Ayat)</label>
+                            <input type="number" id="quran-target" class="w-full border border-gray-300 rounded-xl p-3.5 outline-none focus:border-[#005B29] focus:ring-1 focus:ring-[#005B29] transition-all font-bold" placeholder="Contoh: 10">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-2">Sudah Dibaca</label>
+                            <input type="number" id="quran-read" class="w-full border border-gray-300 rounded-xl p-3.5 outline-none focus:border-[#005B29] focus:ring-1 focus:ring-[#005B29] transition-all font-bold" placeholder="Contoh: 5">
+                        </div>
+                    </div>
+
+                    <div class="mb-5">
+                        <div class="flex justify-between mb-1.5">
+                            <span class="text-xs font-bold text-gray-500">Progress Membaca</span>
+                            <span class="text-xs font-bold text-gray-500" id="quran-progress-text">0%</span>
+                        </div>
+                        <div class="w-full bg-gray-100 rounded-full h-2">
+                            <div class="bg-[#005B29] h-2 rounded-full transition-all duration-500" id="quran-progress-bar" style="width: 0%;"></div>
+                        </div>
+                    </div>
+
+                    <button onclick="simpanQuran()" class="btn-tap w-full bg-[#005B29] hover:bg-[#00471f] text-white font-bold py-3.5 rounded-xl shadow-sm transition-colors text-base">Simpan Qur'an</button>
+                    <button onclick="tandaiSelesaiQuran()" class="btn-tap w-full bg-white border-2 border-[#005B29] text-[#005B29] hover:bg-gray-50 font-bold py-3.5 rounded-xl shadow-sm mt-3 transition-colors text-base">Tandai Target Selesai</button>
+                    
+                    <div class="mt-4 p-4 rounded-xl bg-gray-50 text-center border border-gray-100">
+                        <p class="text-sm font-bold text-gray-400" id="status-quran">Belum Ada Data Disimpan</p>
+                    </div>
+                </div>
+
+                <div id="content-puasa" class="todo-content hidden">
+                    <div class="flex items-center justify-between bg-blue-50/50 p-4 rounded-xl border border-blue-100 mb-6">
+                        <div>
+                            <p class="text-sm text-gray-700 font-bold">Hari ke:</p>
+                            <select id="puasa-hari-select" class="mt-1 bg-white border border-gray-300 rounded-lg px-3 py-2 text-sm outline-none font-bold text-[#005B29] focus:border-[#005B29]" onchange="updatePuasaSelect()"></select>
+                        </div>
+
+                        <label class="flex items-center gap-3 bg-white px-4 py-3 rounded-lg border border-gray-200 shadow-sm cursor-pointer hover:bg-gray-50 transition-colors">
+                            <input type="checkbox" id="puasa-checkbox" class="w-5 h-5 accent-[#005B29]">
+                            <span class="text-sm font-bold text-gray-700">Sudah Puasa</span>
+                        </label>
+                    </div>
+
+                    <button onclick="simpanPuasa()" class="btn-tap w-full bg-[#005B29] hover:bg-[#00471f] text-white font-bold py-3.5 rounded-xl shadow-sm transition-colors text-base">Simpan Puasa</button>
+
+                    <div class="mt-8">
+                        <div class="flex justify-between mb-2">
+                            <span class="text-sm font-bold text-gray-700">Progress 30 Hari</span>
+                            <span class="text-sm font-bold text-[#005B29]" id="puasa-progress-text">0%</span>
+                        </div>
+                        <div class="w-full bg-gray-100 rounded-full h-2 mb-6">
+                            <div class="bg-[#005B29] h-2 rounded-full transition-all duration-500" id="puasa-progress-bar" style="width: 0%;"></div>
+                        </div>
+
+                        <div class="grid grid-cols-5 md:grid-cols-6 gap-3" id="puasa-calendar"></div>
+                    </div>
+
+                    <div class="mt-6 p-4 rounded-xl bg-gray-50 text-center border border-gray-100">
+                        <p class="text-sm font-bold text-gray-400" id="status-puasa">Belum ada data disimpan</p>
+                    </div>
+                </div>
+
+            </section>
+        </main>
+
     </div>
 
     <footer class="w-full pb-8 pt-4 text-center relative z-10 mt-auto border-t border-gray-200 bg-white/50">
         <div class="text-xs font-bold tracking-[0.2em] text-gray-400 uppercase mt-4">
-            Ramadahan Coding Challenge 2026
+            Ramadhan Coding Challenge 2026
         </div>
     </footer>
 
@@ -356,8 +494,182 @@
             } else if (pageId === 'zakat-page') {
                 document.getElementById('nav-zakat').classList.add('active');
                 titleBadge.innerText = 'Kalkulator Zakat';
+            } else if (pageId === 'todo-page') {
+                document.getElementById('nav-todo').classList.add('active');
+                titleBadge.innerText = 'Mutabaah Yaumiyah';
             }
             window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function switchTodo(tab) {
+            document.querySelectorAll('.todo-content').forEach(c => c.classList.add('hidden'));
+            document.getElementById('content-' + tab).classList.remove('hidden');
+            
+            ['shalat', 'quran', 'puasa'].forEach(t => {
+                let btn = document.getElementById('tab-' + t);
+                if(t === tab) {
+                    btn.className = 'px-5 py-2.5 rounded-full bg-[#005B29] text-white text-sm font-bold whitespace-nowrap shadow-sm';
+                } else {
+                    btn.className = 'px-5 py-2.5 rounded-full bg-gray-50 text-gray-500 text-sm font-bold whitespace-nowrap hover:bg-gray-100 transition-colors border border-gray-200';
+                }
+            });
+        }
+
+        function updateGlobalProgress() {
+            let shalatChecked = 0;
+            ['subuh', 'dzuhur', 'ashar', 'maghrib', 'isya'].forEach(w => {
+                if(document.getElementById('chk-' + w).checked) shalatChecked++;
+            });
+            let shalatPct = (shalatChecked / 5) * 100;
+            
+            let qt = parseInt(document.getElementById('quran-target').value) || 0;
+            let qr = parseInt(document.getElementById('quran-read').value) || 0;
+            let quranPct = qt > 0 ? Math.min(100, (qr / qt) * 100) : 0;
+            
+            let totalPct = Math.round((shalatPct + quranPct) / 2);
+            
+            document.getElementById('daily-progress-text').innerText = totalPct + '%';
+            document.getElementById('daily-progress-bar').style.width = totalPct + '%';
+            
+            let mot = "Ayo mulai ibadahmu hari ini!";
+            if(totalPct > 0 && totalPct <= 40) mot = "Semangat! Terus tingkatkan ibadahmu.";
+            else if(totalPct > 40 && totalPct < 100) mot = "Alhamdulillah, sedikit lagi target harian tercapai.";
+            else if(totalPct === 100) mot = "MasyaAllah! Sempurna ibadahmu hari ini ✨";
+            
+            document.getElementById('daily-motivation').innerText = mot;
+        }
+
+        function simpanShalat() {
+            let checked = 0;            
+            ['subuh', 'dzuhur', 'ashar', 'maghrib', 'isya'].forEach(w => {
+                if(document.getElementById('chk-' + w).checked) checked++;
+            });
+            
+            let pct = Math.round((checked / 5) * 100);
+            
+            document.getElementById('shalat-progress-text').innerText = pct + '%';
+            document.getElementById('shalat-progress-bar').style.width = pct + '%';
+            
+            let status = "";
+            let statusEl = document.getElementById('status-shalat');
+            if(pct <= 40) {
+                status = "Belum optimal";
+                statusEl.className = "text-sm font-bold text-[#dc3545]";
+            }
+            else if(pct < 100) {
+                status = "Cukup baik";
+                statusEl.className = "text-sm font-bold text-[#D97706]";
+            }
+            else {
+                status = "MasyaAllah lengkap!";
+                statusEl.className = "text-sm font-bold text-[#005B29]";
+            }
+            statusEl.innerText = status;
+            
+            updateGlobalProgress();
+        }
+
+        function simpanQuran() {
+            let t = parseInt(document.getElementById('quran-target').value) || 0;
+            let r = parseInt(document.getElementById('quran-read').value) || 0;
+            
+            let pct = 0;
+            if(t > 0) pct = Math.min(100, Math.round((r / t) * 100));
+            
+            document.getElementById('quran-progress-text').innerText = pct + '%';
+            document.getElementById('quran-progress-bar').style.width = pct + '%';
+            
+            let status = "";
+            let statusEl = document.getElementById('status-quran');
+            if(pct < 50) {
+                status = "Masih bisa ditambah";
+                statusEl.className = "text-sm font-bold text-[#dc3545]";
+            }
+            else if(pct < 100) {
+                status = "Hampir selesai";
+                statusEl.className = "text-sm font-bold text-[#D97706]";
+            }
+            else {
+                status = "Target tercapai";
+                statusEl.className = "text-sm font-bold text-[#005B29]";
+            }
+            statusEl.innerText = status;
+            
+            updateGlobalProgress();
+        }
+
+        function tandaiSelesaiQuran() {
+            let t = document.getElementById('quran-target').value;
+            if(t && parseInt(t) > 0) {
+                document.getElementById('quran-read').value = t;
+                simpanQuran();
+            }
+        }
+
+        let puasaDays = Array(30).fill(false);
+
+        function initPuasaOptions() {
+            let sel = document.getElementById('puasa-hari-select');
+            if(!sel) return;
+            sel.innerHTML = '';
+            for(let i=1; i<=30; i++) {
+                let opt = document.createElement('option');
+                opt.value = i;
+                opt.innerText = i;
+                sel.appendChild(opt);
+            }
+            renderPuasaCalendar();
+        }
+
+        function updatePuasaSelect() {
+            let val = parseInt(document.getElementById('puasa-hari-select').value) - 1;
+            document.getElementById('puasa-checkbox').checked = puasaDays[val];
+        }
+
+        function renderPuasaCalendar() {
+            const cal = document.getElementById('puasa-calendar');
+            cal.innerHTML = '';
+            let checkedCount = 0;
+            
+            for(let i=0; i<30; i++) {
+                let isChecked = puasaDays[i];
+                if(isChecked) checkedCount++;
+                
+                let div = document.createElement('div');
+                div.className = isChecked ? 
+                    "aspect-square flex items-center justify-center rounded-xl bg-[#005B29] text-white font-bold shadow-sm" : 
+                    "aspect-square flex items-center justify-center rounded-xl bg-gray-50 text-gray-500 font-medium text-sm border border-gray-200";
+                
+                div.innerHTML = isChecked ? `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>` : (i + 1);
+                cal.appendChild(div);
+            }
+            
+            let pct = Math.round((checkedCount / 30) * 100);
+            document.getElementById('puasa-progress-text').innerText = pct + '%';
+            document.getElementById('puasa-progress-bar').style.width = pct + '%';
+            
+            let mot = "";
+            let pStatus = document.getElementById('status-puasa');
+            if(checkedCount === 0) {
+                mot = "Ayo niatkan puasa dengan ikhlas!";
+                pStatus.className = "text-sm font-bold text-gray-400";
+            } else if(checkedCount < 15) {
+                mot = "Semangat! Perjalanan masih panjang.";
+                pStatus.className = "text-sm font-bold text-[#D97706]";
+            } else if(checkedCount < 30) {
+                mot = "Alhamdulillah, sudah lebih dari separuh bulan!";
+                pStatus.className = "text-sm font-bold text-[#D97706]";
+            } else {
+                mot = "MasyaAllah! Puasa sebulan penuh telah selesai.";
+                pStatus.className = "text-sm font-bold text-[#005B29]";
+            }
+            pStatus.innerText = mot;
+        }
+
+        function simpanPuasa() {
+            let val = parseInt(document.getElementById('puasa-hari-select').value) - 1;
+            puasaDays[val] = document.getElementById('puasa-checkbox').checked;
+            renderPuasaCalendar();
         }
 
         let count = 0;
@@ -568,6 +880,9 @@
             hasilDiv.classList.remove('hidden');
             hasilDiv.classList.add('animate-pop-in');
         }
+
+        initPuasaOptions();
+
     </script>
 </body>
 </html>
