@@ -74,14 +74,16 @@
     <div class="fixed inset-0 bg-ornament pointer-events-none z-0"></div>
     <div class="fixed top-10 left-[-20px] text-8xl opacity-5 select-none pointer-events-none transform -rotate-45 z-0">🌿</div>
     <div class="fixed bottom-20 right-[-20px] text-8xl opacity-5 select-none pointer-events-none transform rotate-45 z-0">🌿</div>
-    
+
     <nav class="bg-ramadhan-nav text-white shadow-lg sticky top-0 z-50">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <div class="font-serif text-lg md:text-xl font-bold tracking-wider truncate mr-2">
-                <span class="text-ramadhan-gold">🌙</span> Selamat menunaikan ibadah Ramadhan 😊
+                <span class="text-ramadhan-gold">🌙</span> Ramadhan Portal
             </div>
             <div class="flex space-x-1 md:space-x-2 bg-white/10 p-1 rounded-full overflow-x-auto whitespace-nowrap hide-scrollbar">
-                <button onclick="switchPage('doa-page')" id="nav-doa" class="nav-link active px-3 md:px-4 py-1.5 rounded-full text-xs md:text-sm transition-colors duration-200">Doa</button>
+                <button onclick="switchPage('home-page')" id="nav-home" class="nav-link active px-3 md:px-4 py-1.5 rounded-full text-xs md:text-sm transition-colors duration-200">Home</button>
+                <button onclick="switchPage('imsakiyah-page')" id="nav-imsakiyah" class="nav-link px-3 md:px-4 py-1.5 rounded-full text-xs md:text-sm transition-colors duration-200">Imsakiyah</button>
+                <button onclick="switchPage('doa-page')" id="nav-doa" class="nav-link px-3 md:px-4 py-1.5 rounded-full text-xs md:text-sm transition-colors duration-200">Doa</button>
                 <button onclick="switchPage('dzikir-page')" id="nav-dzikir" class="nav-link px-3 md:px-4 py-1.5 rounded-full text-xs md:text-sm transition-colors duration-200">Dzikir</button>
                 <button onclick="switchPage('zakat-page')" id="nav-zakat" class="nav-link px-3 md:px-4 py-1.5 rounded-full text-xs md:text-sm transition-colors duration-200">Zakat</button>
                 <button onclick="switchPage('todo-page')" id="nav-todo" class="nav-link px-3 md:px-4 py-1.5 rounded-full text-xs md:text-sm transition-colors duration-200">To-Do</button>
@@ -92,7 +94,7 @@
     <header class="w-full pt-8 pb-4 px-4 relative z-10 flex flex-col items-center">
         <div class="flex items-center gap-4 w-full max-w-2xl justify-center">
             <div class="bg-ramadhan-green text-white px-6 py-2.5 rounded-full font-medium text-sm md:text-base shadow-md flex items-center gap-3">
-                <span id="page-title-badge">Doa Pilihan</span>
+                <span id="page-title-badge">Ramadhan Portal</span>
             </div>
             <div class="hidden md:flex items-center gap-2">
                 <div class="h-[2px] w-16 bg-ramadhan-green"></div>
@@ -103,8 +105,121 @@
     </header>
 
     <div class="flex-grow flex flex-col w-full">
+
+        <main id="home-page" class="page-content active container mx-auto px-4 flex-col items-center relative z-10 max-w-5xl mb-12">
+            
+            <section class="bg-gradient-to-b from-[#005B29] to-[#1B4332] text-white p-10 md:p-16 rounded-[32px] shadow-lg w-full text-center relative overflow-hidden mb-12 border-4 border-white">
+                <div class="absolute inset-0 bg-ornament pointer-events-none opacity-20"></div>
+                <div class="absolute -right-10 -top-10 text-9xl opacity-10 rotate-12">🌙</div>
+                <h2 class="font-serif text-4xl md:text-6xl font-bold mb-4 relative z-10 tracking-wide text-ramadhan-cream">Selamat Datang</h2>
+                <p class="text-ramadhan-cream/90 text-sm md:text-lg max-w-2xl mx-auto relative z-10 leading-relaxed font-medium">Pusat layanan dan panduan ibadah terpadu untuk menemani keseharian Anda meraih keberkahan di bulan suci Ramadhan.</p>
+            </section>
+
+            <section class="w-full">
+                <div class="flex items-center justify-center gap-4 mb-8 text-center">
+                    <div class="h-[1px] w-12 bg-gray-300"></div>
+                    <h3 class="font-serif text-2xl font-bold text-ramadhan-dark uppercase tracking-widest text-sm">Fitur Aplikasi</h3>
+                    <div class="h-[1px] w-12 bg-gray-300"></div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    
+                    <div class="bg-white p-8 rounded-[24px] border border-gray-100 shadow-soft flex flex-col items-center text-center hover:-translate-y-2 transition-transform duration-300 cursor-pointer" onclick="switchPage('imsakiyah-page')">
+                        <div class="w-16 h-16 bg-[#005B29]/10 rounded-full flex items-center justify-center text-3xl mb-4">⏱️</div>
+                        <h4 class="font-bold text-lg text-ramadhan-dark mb-2 font-serif">Jadwal Imsakiyah</h4>
+                        <p class="text-sm text-gray-500 mb-6 flex-grow leading-relaxed">Cek jadwal shalat dan imsak update otomatis berdasarkan pilihan kota Anda.</p>
+                        <span class="text-xs font-bold text-[#005B29] uppercase tracking-wider bg-gray-50 px-4 py-2 rounded-full w-full">Buka Fitur</span>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-[24px] border border-gray-100 shadow-soft flex flex-col items-center text-center hover:-translate-y-2 transition-transform duration-300 cursor-pointer" onclick="switchPage('doa-page')">
+                        <div class="w-16 h-16 bg-ramadhan-gold/10 rounded-full flex items-center justify-center text-3xl mb-4">🤲</div>
+                        <h4 class="font-bold text-lg text-ramadhan-dark mb-2 font-serif">Doa Pilihan</h4>
+                        <p class="text-sm text-gray-500 mb-6 flex-grow leading-relaxed">Kumpulan doa-doa harian, sahur, dan berbuka puasa sesuai sunnah Rasulullah.</p>
+                        <span class="text-xs font-bold text-ramadhan-gold uppercase tracking-wider bg-gray-50 px-4 py-2 rounded-full w-full">Buka Fitur</span>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-[24px] border border-gray-100 shadow-soft flex flex-col items-center text-center hover:-translate-y-2 transition-transform duration-300 cursor-pointer" onclick="switchPage('dzikir-page')">
+                        <div class="w-16 h-16 bg-[#005B29]/10 rounded-full flex items-center justify-center text-3xl mb-4">📿</div>
+                        <h4 class="font-bold text-lg text-ramadhan-dark mb-2 font-serif">Penghitung Dzikir</h4>
+                        <p class="text-sm text-gray-500 mb-6 flex-grow leading-relaxed">Tasbih digital interaktif yang membantu Anda menjaga rutinitas target dzikir harian.</p>
+                        <span class="text-xs font-bold text-[#005B29] uppercase tracking-wider bg-gray-50 px-4 py-2 rounded-full w-full">Buka Fitur</span>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-[24px] border border-gray-100 shadow-soft flex flex-col items-center text-center hover:-translate-y-2 transition-transform duration-300 cursor-pointer" onclick="switchPage('zakat-page')">
+                        <div class="w-16 h-16 bg-ramadhan-gold/10 rounded-full flex items-center justify-center text-3xl mb-4">💰</div>
+                        <h4 class="font-bold text-lg text-ramadhan-dark mb-2 font-serif">Kalkulator Zakat</h4>
+                        <p class="text-sm text-gray-500 mb-6 flex-grow leading-relaxed">Hitung kewajiban zakat penghasilan dan emas secara akurat sesuai dengan syariat.</p>
+                        <span class="text-xs font-bold text-ramadhan-gold uppercase tracking-wider bg-gray-50 px-4 py-2 rounded-full w-full">Buka Fitur</span>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-[24px] border border-gray-100 shadow-soft flex flex-col items-center text-center hover:-translate-y-2 transition-transform duration-300 cursor-pointer lg:col-span-2 lg:flex-row lg:text-left" onclick="switchPage('todo-page')">
+                        <div class="w-16 h-16 bg-[#005B29]/10 rounded-full flex items-center justify-center text-3xl mb-4 lg:mb-0 lg:mr-6 shrink-0">📋</div>
+                        <div class="flex flex-col lg:flex-grow">
+                            <h4 class="font-bold text-lg text-ramadhan-dark mb-2 font-serif">Mutabaah Yaumiyah (To-Do)</h4>
+                            <p class="text-sm text-gray-500 mb-6 lg:mb-0 leading-relaxed">Tracker interaktif untuk memantau rutinitas ibadah harian seperti shalat 5 waktu, target tilawah Qur'an, dan kalender puasa Ramadhan.</p>
+                        </div>
+                        <div class="w-full lg:w-auto shrink-0 lg:ml-6 flex items-center">
+                            <span class="text-xs font-bold text-[#005B29] uppercase tracking-wider bg-gray-50 px-6 py-3 rounded-full w-full lg:w-auto inline-block text-center border border-gray-200">Akses Tracker</span>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+        </main>
+
+        <main id="imsakiyah-page" class="page-content container mx-auto px-4 flex-col items-center relative z-10 max-w-4xl w-full mb-12">
+            <section class="bg-white p-6 md:p-10 rounded-[32px] shadow-soft w-full border border-gray-100/50 relative overflow-hidden">
+                <div class="text-center mb-8">
+                    <h3 class="font-serif text-3xl md:text-4xl text-ramadhan-dark font-bold mb-2">Jadwal Imsakiyah</h3>
+                    <p class="text-gray-500 text-sm" id="jadwal-info-text">Memuat jadwal...</p>
+                </div>
+
+                <div class="mb-6 flex flex-col sm:flex-row gap-4 justify-between items-center bg-gray-50 p-4 rounded-2xl border border-gray-100">
+                    <label class="font-bold text-[#005B29] whitespace-nowrap">Pilih Kota:</label>
+                    <div class="relative w-full sm:w-72">
+                        <select id="kota-select" class="w-full bg-white border border-gray-300 text-gray-700 font-medium px-4 py-2.5 rounded-xl appearance-none outline-none cursor-pointer focus:border-[#005B29] focus:ring-1 focus:ring-[#005B29] transition-all shadow-sm" disabled>
+                            <option>Memuat daftar kota...</option>
+                        </select>
+                        <div class="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </div>
+                    </div>
+                </div>
+
+               <div id="jadwal-loading" class="text-center py-12">
+                    <div class="inline-block animate-spin rounded-full h-10 w-10 border-4 border-[#005B29] border-t-transparent mb-4"></div>
+                    <p class="text-gray-500 font-bold text-sm">Memuat data jadwal shalat...</p>
+                </div>
+
+                <div id="jadwal-error" class="hidden text-center py-12 bg-red-50 rounded-2xl border border-red-100">
+                    <span class="text-4xl mb-3 block">⚠️</span>
+                    <h4 class="font-bold text-red-700">Gagal Memuat Data</h4>
+                    <p class="text-sm text-red-500 mt-1">Silakan periksa koneksi internet dan coba lagi.</p>
+                    <button onclick="fetchJadwalAktif()" class="mt-4 px-6 py-2.5 bg-red-600 text-white rounded-full text-sm font-bold shadow-sm hover:bg-red-700 transition-colors">Coba Lagi</button>
+                </div>
+
+                <div id="jadwal-container" class="hidden overflow-x-auto rounded-2xl border border-gray-200 shadow-sm hide-scrollbar">
+                    <table class="w-full text-left border-collapse min-w-[700px]">
+                        <thead>
+                            <tr class="bg-[#005B29] text-white text-sm tracking-wide">
+                                <th class="py-4 px-4 font-bold whitespace-nowrap">Tanggal</th>
+                                <th class="py-4 px-4 font-bold text-center">Imsak</th>
+                                <th class="py-4 px-4 font-bold text-center">Subuh</th>
+                                <th class="py-4 px-4 font-bold text-center">Dzuhur</th>
+                                <th class="py-4 px-4 font-bold text-center">Ashar</th>
+                                <th class="py-4 px-4 font-bold text-center">Maghrib</th>
+                                <th class="py-4 px-4 font-bold text-center">Isya</th>
+                            </tr>
+                        </thead>
+                        <tbody id="jadwal-tbody" class="bg-white text-sm">
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
         
-        <main id="doa-page" class="page-content active container mx-auto px-4 flex-col items-center relative z-10 max-w-5xl mb-12">
+        <main id="doa-page" class="page-content container mx-auto px-4 flex-col items-center relative z-10 max-w-5xl mb-12">
             <div class="bg-white p-2.5 rounded-[32px] shadow-soft mb-10 w-full max-w-2xl border border-gray-100/50 mx-auto">
                 <div class="rounded-[24px] h-48 md:h-64 w-full relative overflow-hidden bg-gray-200 flex items-center justify-center">
                     <span class="text-4xl">🕌</span>
@@ -485,20 +600,114 @@
             
             const titleBadge = document.getElementById('page-title-badge');
 
-            if(pageId === 'doa-page') {
+            if(pageId === 'home-page') {
+                document.getElementById('nav-home').classList.add('active');
+                titleBadge.innerText = 'Ramadhan Portal';
+            } else if(pageId === 'imsakiyah-page') {
+                document.getElementById('nav-imsakiyah').classList.add('active');
+                titleBadge.innerText = 'Jadwal Imsakiyah';
+            } else if(pageId === 'doa-page') {
                 document.getElementById('nav-doa').classList.add('active');
                 titleBadge.innerText = 'Doa Pilihan';
-            } else if (pageId === 'dzikir-page') {
+            } else if(pageId === 'dzikir-page') {
                 document.getElementById('nav-dzikir').classList.add('active');
                 titleBadge.innerText = 'Fitur Interaktif';
-            } else if (pageId === 'zakat-page') {
+            } else if(pageId === 'zakat-page') {
                 document.getElementById('nav-zakat').classList.add('active');
                 titleBadge.innerText = 'Kalkulator Zakat';
-            } else if (pageId === 'todo-page') {
+            } else if(pageId === 'todo-page') {
                 document.getElementById('nav-todo').classList.add('active');
                 titleBadge.innerText = 'Mutabaah Yaumiyah';
             }
             window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        let currentKotaId = '1301';
+
+        async function initKota() {
+            try {
+                const res = await fetch('https://api.myquran.com/v2/sholat/kota/semua');
+                const json = await res.json();
+                
+                if(json.status && json.data) {
+                    const select = document.getElementById('kota-select');
+                    select.innerHTML = '';
+                    
+                    json.data.forEach(k => {
+                        const opt = document.createElement('option');
+                        opt.value = k.id;
+                        opt.innerText = k.lokasi;
+                        if(k.id === currentKotaId) opt.selected = true;
+                        select.appendChild(opt);
+                    });
+                    
+                    select.disabled = false;
+                    select.addEventListener('change', (e) => {
+                        currentKotaId = e.target.value;
+                        fetchJadwalAktif();
+                    });
+                    
+                    fetchJadwalAktif();
+                }
+            } catch (e) {
+                document.getElementById('kota-select').innerHTML = '<option>Gagal memuat kota</option>';
+            }
+        }
+
+        async function fetchJadwalAktif() {
+            const loading = document.getElementById('jadwal-loading');
+            const error = document.getElementById('jadwal-error');
+            const container = document.getElementById('jadwal-container');
+            const tbody = document.getElementById('jadwal-tbody');
+            const titleText = document.getElementById('jadwal-info-text');
+
+            loading.classList.remove('hidden');
+            error.classList.add('hidden');
+            container.classList.add('hidden');
+
+            const now = new Date();
+            const year = now.getFullYear();
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const todayStr = `${year}-${month}-${String(now.getDate()).padStart(2, '0')}`;
+
+            try {
+                const res = await fetch(`https://api.myquran.com/v2/sholat/jadwal/${currentKotaId}/${year}/${month}`);
+                const json = await res.json();
+
+                if(json.status && json.data && json.data.jadwal) {
+                    titleText.innerText = `Bulan ${month} Tahun ${year} - ${json.data.lokasi}`;
+                    tbody.innerHTML = '';
+                    
+                    json.data.jadwal.forEach(j => {
+                        const tr = document.createElement('tr');
+                        
+                        if (j.date === todayStr) {
+                            tr.className = "bg-[#D97706]/10 border-b border-gray-100";
+                        } else {
+                            tr.className = "border-b border-gray-100 hover:bg-gray-50 transition-colors";
+                        }
+
+                        tr.innerHTML = `
+                            <td class="py-4 px-4 font-medium text-gray-800 whitespace-nowrap ${j.date === todayStr ? 'font-bold text-[#D97706]' : ''}">${j.tanggal}</td>
+                            <td class="py-4 px-4 text-center font-bold text-[#005B29]">${j.imsak}</td>
+                            <td class="py-4 px-4 text-center text-gray-600">${j.subuh}</td>
+                            <td class="py-4 px-4 text-center text-gray-600">${j.dzuhur}</td>
+                            <td class="py-4 px-4 text-center text-gray-600">${j.ashar}</td>
+                            <td class="py-4 px-4 text-center font-bold text-[#D97706]">${j.maghrib}</td>
+                            <td class="py-4 px-4 text-center text-gray-600">${j.isya}</td>
+                        `;
+                        tbody.appendChild(tr);
+                    });
+
+                    loading.classList.add('hidden');
+                    container.classList.remove('hidden');
+                } else {
+                    throw new Error("Format data tidak sesuai");
+                }
+            } catch (e) {
+                loading.classList.add('hidden');
+                error.classList.remove('hidden');
+            }
         }
 
         function switchTodo(tab) {
@@ -882,6 +1091,7 @@
         }
 
         initPuasaOptions();
+        initKota();
 
     </script>
 </body>
